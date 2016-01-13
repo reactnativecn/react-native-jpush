@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "C9B4CE60C95F2C86355E1B06C6E8E0179B89567E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AD6195520EC6921B61AFB4791E02EC195113A9FB" : 0,
+    "C9B4CE60C95F2C86355E1B06C6E8E0179B89567E" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "1292D645-A1E7-4AEA-9BA2-2BE11F0E153B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AD6195520EC6921B61AFB4791E02EC195113A9FB" : "..\/..",
+    "C9B4CE60C95F2C86355E1B06C6E8E0179B89567E" : "react-native-jpush\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "RCTJPush",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ios\/RCTJPush.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.oschina.net\/lvbingru\/COSPA-RN.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AD6195520EC6921B61AFB4791E02EC195113A9FB"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/reactnativecn\/react-native-jpush",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C9B4CE60C95F2C86355E1B06C6E8E0179B89567E"
+    }
+  ]
+}
