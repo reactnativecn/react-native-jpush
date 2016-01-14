@@ -16,24 +16,18 @@ export const JpushEventReceiveCustomMessage = 'kJPFNetworkDidReceiveCustomMessag
 
 export default class JPushNotification {
 
-    _data: Object;
-    _alert: string | Object;
-    _sound: string;
-    _badgeCount: number;
+    _data;
 
-    constructor(nativeNotif: Object) {
+    constructor(nativeNotif) {
         this._data = {};
 
-        Object.keys(nativeNotif).forEach((notifKey) => {
-            var notifVal = nativeNotif[notifKey];
-            if (notifKey === 'aps') {
-                this._alert = notifVal.alert;
-                this._sound = notifVal.sound;
-                this._badgeCount = notifVal.badge;
-            } else {
-                this._data[notifKey] = notifVal;
-            }
-        });
+        if (typeof nativeNotif === 'string') {
+            nativeNotif = JSON.parse(nativeNotif)
+        }
+
+        if (nativeNotif) {
+            this._data = nativeNotif
+        }
     }
 
     static popInitialNotification() {
@@ -44,10 +38,16 @@ export default class JPushNotification {
     }
 
     static setAlias(alias){
+        if (!alias) {
+            alias = ''
+        }
         nativeModule.setAlias(alias)
     }
 
     static setTags(tags, alias){
+        if (!alias) {
+            alias = ''
+        }
         nativeModule.setTags(tags, alias)
     }
 
