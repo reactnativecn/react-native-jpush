@@ -27,7 +27,7 @@ rnpm link
 
 ```
 manifestPlaceholders = [
-    JPush_APPID: "JPush的APPID"		//在此修改JPush的APPID
+    JPush_APPID: "JPush的APPID",	//在此修改JPush的APPID
     APP_CHANNEL: "应用渠道号"		//应用渠道号
 ]
 ```
