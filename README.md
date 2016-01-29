@@ -19,9 +19,20 @@ rnpm link
 
 
 ### iOS工程配置
-在工程target的`Build Phases->Link Binary with Libraries`中加入`liz.tbd、CoreTelephony.framework、Security.framework`
+a.在工程target的`Build Phases->Link Binary with Libraries`中加入`liz.tbd、CoreTelephony.framework、Security.framework`
 
-在`AppDelegate.m`中加入
+b.在你的工程中创建一个新的Property List文件，并将其命名为PushConfig.plist，文件所含字段如下：
+
+```
+CHANNEL
+	指明应用程序包的下载渠道，为方便分渠道统计，具体值由你自行定义，如：App Store。
+APP_KEY
+	与JPush上申请的 AppKey 一致。
+APS_FOR_PRODUCTION
+	0 (默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。
+	注：此字段的值要与Build Settings的Code Signing配置的证书环境一致。
+```
+c.在`AppDelegate.m`中加入
 
 ```
 #import "RCTJPush.h"
