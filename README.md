@@ -21,6 +21,36 @@ rnpm link
 ### iOS工程配置
 在工程target的`Build Phases->Link Binary with Libraries`中加入`liz.tbd、CoreTelephony.framework、Security.framework`
 
+在`AppDelegate.m`中加入
+
+```
+#import "RCTJPush.h"
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+  ...
+  
+  [RCTJPush application:application didFinishLaunchingWithOptions:launchOptions];
+  
+  ...
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+  [RCTJPush application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification
+{
+  [RCTJPush application:application didReceiveRemoteNotification:notification];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)notification fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+  [RCTJPush application:application didReceiveRemoteNotification:notification];
+  completionHandler(UIBackgroundFetchResultNewData);
+}
+```
+
 ### Android配置
 
 在`android/app/build.gradle`里，defaultConfig栏目下添加如下代码：
