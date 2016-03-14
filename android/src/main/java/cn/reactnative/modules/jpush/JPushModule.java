@@ -79,8 +79,9 @@ public class JPushModule extends ReactContextBaseJavaModule {
         gModules = null;
     }
 
-    private static void sendEvent(String eventName, WritableMap message) {
+    private static void sendEvent(String eventName, Bundle bundle) {
         if (gModules != null){
+            WritableMap message = Arguments.fromBundle(bundle);
             DeviceEventManagerModule.RCTDeviceEventEmitter emitter = gModules.getReactApplicationContext().getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class);
             emitter.emit(eventName, message);
             return;
@@ -92,19 +93,18 @@ public class JPushModule extends ReactContextBaseJavaModule {
 
 //        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Bundle bundle = intent.getExtras();
-        WritableMap message = Arguments.fromBundle(bundle);
 
         if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             Log.d(TAG, "接受到推送下来的自定义消息");
-            JPushModule.sendEvent("kJPFNetworkDidReceiveCustomMessageNotification", message);
+            JPushModule.sendEvent("kJPFNetworkDidReceiveCustomMessageNotification", bundle);
 
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
             Log.d(TAG, "接受到推送下来的通知");
-            JPushModule.sendEvent("kJPFNetworkDidReceiveMessageNotification", message);
+            JPushModule.sendEvent("kJPFNetworkDidReceiveMessageNotification", bundle);
 
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
             Log.d(TAG, "用户点击打开了通知");
-            JPushModule.sendEvent("kJPFNetworkDidOpenMessageNotification", message);
+            JPushModule.sendEvent("kJPFNetworkDidOpenMessageNotification", bundle);
 
             if (gModules != null && gModules.getCurrentActivity()!=null) {
                 Intent mIntent = new Intent(context, gModules.getCurrentActivity().getClass());
