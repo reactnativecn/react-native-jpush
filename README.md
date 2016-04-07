@@ -15,7 +15,9 @@ npm install react-native-jpush --save
 rnpm link
 ```
 
-#### Note: rnpm requires node version 4.1 or higher
+#### Note: 
+* rnpm requires node version 4.1 or higher
+* Android SDK Build-tools 23.0.2 or higher
 
 
 ### iOS工程配置
