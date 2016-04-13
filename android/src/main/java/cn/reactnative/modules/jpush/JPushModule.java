@@ -31,6 +31,7 @@ import java.util.Map;
 import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
+import cn.jpush.android.data.JPushLocalNotification;
 
 /**
  * Created by lvbingru on 10/23/15.
