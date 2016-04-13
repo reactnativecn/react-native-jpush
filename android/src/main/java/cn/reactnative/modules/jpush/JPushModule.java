@@ -98,6 +98,31 @@ public class JPushModule extends ReactContextBaseJavaModule {
             Log.d(TAG, "接受到推送下来的自定义消息");
             JPushModule.sendEvent("kJPFNetworkDidReceiveCustomMessageNotification", bundle);
 
+            String title = bundle.getString(JPushInterface.EXTRA_TITLE);
+            String msg = bundle.getString(JPushInterface.EXTRA_MESSAGE);
+            String extras = bundle.getString(JPushInterface.EXTRA_EXTRA);
+            long ID = bundle.getLong(JPushInterface.EXTRA_NOTIFICATION_ID);
+
+            if (title == null) {
+                title = "";
+            }
+            if (msg == null) {
+                msg = "";
+            }
+            if (extras == null) {
+                extras = "";
+            }
+
+            JPushLocalNotification ln = new JPushLocalNotification();
+            ln.setBuilderId(0);
+            ln.setContent(msg);
+            ln.setTitle(title);
+            ln.setNotificationId(ID);
+            ln.setExtras(extras);
+            ln.setNotificationId(System.currentTimeMillis());
+
+            JPushInterface.addLocalNotification(context.getApplicationContext(), ln);
+
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
             Log.d(TAG, "接受到推送下来的通知");
             JPushModule.sendEvent("kJPFNetworkDidReceiveMessageNotification", bundle);
@@ -157,14 +182,18 @@ public class JPushModule extends ReactContextBaseJavaModule {
         JPushInterface.clearNotificationById(getReactApplicationContext(), notificationId);
     }
 
-    public void setPushTime(ReadableArray weaks, int startHour, int endHour) {
+    @ReactMethod
+    public void setPushTime
+            (ReadableArray weaks, int startHour, int endHour) {
         JPushInterface.setPushTime(getReactApplicationContext(), _intArrayToSet(weaks), startHour, endHour);
     }
 
+    @ReactMethod
     public void setSilenceTime(int startHour, int startMinute, int endHour, int endMinute) {
         JPushInterface.setSilenceTime(getReactApplicationContext(), startHour, startMinute, endHour, endMinute);
     }
 
+    @ReactMethod
     public void setLatestNotificationNumber(int maxNum) {
         JPushInterface.setLatestNotificationNumber(getReactApplicationContext(), maxNum);
     }
