@@ -222,23 +222,6 @@ public class JPushModule extends ReactContextBaseJavaModule {
         return set;
     }
 
-    private Activity _getMainActivity(){
-        ReactContext context = getReactApplicationContext();
-        Field[] fields = ReactContext.class.getDeclaredFields();
-        for (Field field : fields){
-            if (field.getName().equals("mCurrentActivity")){
-                field.setAccessible(true);
-                try {
-                    return (Activity)field.get(context);
-                }catch (Throwable e){
-                    Log.e("ReactNative", e.getMessage(), e);
-                }
-            }
-        }
-        return null;
-    }
-
-
     public static class JPushReceiver extends BroadcastReceiver {
 
         public JPushReceiver() {}
