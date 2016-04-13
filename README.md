@@ -12,7 +12,7 @@ npm install react-native-jpush --save
 
 ### link
 ```bash
-rnpm link
+rnpm link react-native-jpush
 ```
 
 #### Note: 
