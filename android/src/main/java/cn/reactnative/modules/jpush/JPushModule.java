@@ -64,6 +64,7 @@ public class JPushModule extends ReactContextBaseJavaModule {
         final Map<String, Object> constants = new HashMap<>();
         if (holdMessage != null) {
             constants.put("initialNotification", holdMessage);
+            JPushModule.holdMessage = null;
         }
         return constants;
     }
