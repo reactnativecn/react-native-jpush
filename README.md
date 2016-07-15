@@ -15,7 +15,7 @@ npm install react-native-jpush --save
 rnpm link react-native-jpush
 ```
 
-#### Note: 
+#### Note:
 * rnpm requires node version 4.1 or higher
 * Android SDK Build-tools 23.0.2 or higher
 
@@ -42,9 +42,9 @@ c.在`AppDelegate.m`中加入
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   ...
-  
+
   [RCTJPush application:application didFinishLaunchingWithOptions:launchOptions];
-  
+
   ...
 }
 
@@ -91,7 +91,16 @@ componentDidMount() {
     this.pushlisteners = [
         JPush.addEventListener(JpushEventReceiveMessage, this.onReceiveMessage.bind(this)),
         JPush.addEventListener(JpushEventOpenMessage, this.onOpenMessage.bind(this)),
-    ]
+    ];
+    AppState.addEventListener('change', (appState)=>{
+               if(appState == 'active') {
+                     JPush.getHoldMessages((message)=>{
+                         if(message){
+                             this.onOpenMessage(message);
+                         }
+                     });
+                 }
+           });
 }
 componentWillUnmount() {
     this.pushlisteners.forEach(listener=> {
