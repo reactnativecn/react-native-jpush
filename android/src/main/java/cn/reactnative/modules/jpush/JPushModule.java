@@ -1,7 +1,6 @@
 package cn.reactnative.modules.jpush;
 
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -13,7 +12,6 @@ import android.util.Log;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
@@ -23,7 +21,6 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -78,6 +75,7 @@ public class JPushModule extends ReactContextBaseJavaModule {
     public void onCatalystInstanceDestroy() {
         super.onCatalystInstanceDestroy();
         gModules = null;
+        holdMessage = null;
     }
 
     private static void sendEvent(String eventName, Bundle bundle) {
