@@ -1,5 +1,7 @@
 # react-native-jpush
 
+# 现推荐使用极光官方维护的推送插件[jpush-react-native](https://github.com/jpush/jpush-react-native)
+
 React Native的极光推送插件, react-native版本需要0.17.0及以上
 
 ## 如何安装
