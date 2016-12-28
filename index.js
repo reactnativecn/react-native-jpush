@@ -51,6 +51,14 @@ export default class JPushNotification {
         nativeModule.setTags(tags, alias)
     }
 
+    static getHoldMessages(callback){
+        nativeModule.getMyHoldMessage((data)=>{
+            if(data){
+                callback(new JPushNotification(data));
+            }
+        });
+    }
+
     static getRegistrationID(){
         return new Promise(resolve=>{
             nativeModule.getRegistrationID(resolve)
@@ -166,5 +174,3 @@ function checkListenerType(type) {
         'JPushNotification only supports `JpushEventReceiveMessage` ,`JpushEventOpenMessage`, `JpushEventReceiveCustomMessage`, events'
     );
 }
-
-

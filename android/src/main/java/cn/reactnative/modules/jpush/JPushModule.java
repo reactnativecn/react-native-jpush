@@ -147,6 +147,17 @@ public class JPushModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void getMyHoldMessage(Callback success_callback) {
+      if(JPushModule.holdMessage != null){
+        String str = new String(JPushModule.holdMessage);
+        JPushModule.holdMessage = null;
+        success_callback.invoke(str);
+      }else {
+        success_callback.invoke(new String());
+      }
+    }
+
+    @ReactMethod
     public void resumePush(){
         JPushInterface.resumePush(getReactApplicationContext());
     }
